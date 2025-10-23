@@ -1,0 +1,70 @@
+/* Animação fade-in para entradas suaves */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação de pulse para botões */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fdb91388;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(253, 185, 19, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 185, 19, 0);
+  }
+}
+
+/* Animação de brilho em títulos */
+@keyframes shine {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+/* Aparecer os elementos ao entrar na tela inicial */
+.hero, .features, .services, .portfolio, .stats, .testimonials, .cta, .footer-content {
+  animation: fadeInUp 1.3s cubic-bezier(.6,.05,.28,.91) both;
+}
+
+.hero h1, .section-header h2 {
+  background: linear-gradient(90deg, #fff, #fdb913 30%, #fff 60%);
+  background-size: 400px auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+/* Pulse no botão principal */
+.btn-primary, .btn-whatsapp {
+  position: relative;
+  animation: pulse 2s infinite;
+}
+
+/* Delay para cada bloco para efeito cascata */
+.features .feature-card:nth-child(1) { animation-delay: 0.2s; }
+.features .feature-card:nth-child(2) { animation-delay: 0.4s; }
+.features .feature-card:nth-child(3) { animation-delay: 0.6s; }
+.services-grid .service-card:nth-child(1) { animation-delay: 0.2s; }
+.services-grid .service-card:nth-child(2) { animation-delay: 0.4s; }
+.services-grid .service-card:nth-child(3) { animation-delay: 0.6s; }
+.testimonials-grid .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+.testimonials-grid .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+.testimonials-grid .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* Transição suave em hovers */
+.feature-card, .service-card, .testimonial-card, .btn-primary, .btn-secondary, .btn-outline, .btn-whatsapp {
+  transition: all 0.3s cubic-bezier(.67,.03,.29,.99);
+}
