@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioCarbon Automotivo - Estética Automotiva Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            background: #FDB913;
+            color: #000;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #999;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #FDB913;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone {
+            color: #FDB913;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #FDB913;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #e5a610;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+
+        .badge {
+            background: rgba(139, 69, 19, 0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge i {
+            color: #FDB913;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: #FDB913;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 80px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #FDB913;
+        }
+
+        .feature-card i {
+            color: #FDB913;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 80px;
+            background: #0a0a0a;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: #FDB913;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: #999;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-icon {
+            background: #FDB913;
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-card ul li {
+            color: #FDB913;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-card ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 80px;
+            background: #000;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ba-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #FDB913;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .ba-label.depois {
+            background: #28a745;
+        }
+
+        .ba-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 80px;
+            background: #0a0a0a;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            color: #FDB913;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #999;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid #FDB913;
+            color: #FDB913;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #FDB913;
+            color: #000;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 80px;
+            background: #000;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quote-icon {
+            color: #FDB913;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #FDB913;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p {
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 80px;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 80px 40px;
+            border-radius: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        .contact-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            color: #999;
+        }
+
+        .contact-phone i {
+            color: #FDB913;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 80px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #FDB913;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-about .logo-icon {
+            width: fit-content;
+        }
+
+        .footer-about p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FDB913;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FDB913;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            color: #999;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: #FDB913;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .features,
+            .services,
+            .portfolio,
+            .stats,
+            .testimonials,
+            .cta,
+            footer {
+                padding: 60px 20px;
+            }
+
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">SC</div>
+            <div class="logo-text">
+                <h2>StudioCarbon</h2>
+                <p>automotivo</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#agendamento">Agendamento</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="tel:1199999999" class="phone"><i class="fas fa-phone"></i> (11) 99999-9999</a>
+            <a href="#agendar" class="btn-primary">Agende Agora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="badge">
+            <i class="fas fa-award"></i>
+            +10 Anos de Excelência
+        </div>
+        <h1>
+            Transforme Seu Veículo em<br>
+            <span class="highlight">Uma Obra de Arte</span>
+        </h1>
+        <p>
+            Estética automotiva premium com técnicas avançadas de detalhamento, 
+            vitrificação e proteção. Resultados excepcionais para quem exige o melhor.
+        </p>
+        <div class="hero-buttons">
+            <a href="#agendar" class="btn-primary">Agende Seu Serviço <i class="fas fa-arrow-right"></i></a>
+            <a href="#servicos" class="btn-secondary">Conheça Nossos Serviços</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <div class="features">
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Garantia de Qualidade</h3>
+            <p>Produtos premium e técnicas profissionais certificadas</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>Agendamento Flexível</h3>
+            <p>Horários adaptados à sua rotina e necessidades</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-user-tie"></i>
+            <h3>Equipe Especializada</h3>
+            <p>Profissionais treinados e certificados internacionalmente</p>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="section-header">
+            <p class="section-tag">NOSSOS SERVIÇOS</p>
+            <h2>Excelência em Cada Detalhe</h2>
+            <p>Oferecemos uma gama completa de serviços premium para manter seu veículo impecável, protegido e valorizado.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <i class="fas fa-car" style="font-size: 80px; color: #FDB913;"></i>
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Polimento Técnico</h3>
+                    <p>Correção de pintura profissional, removendo riscos, hologramas e oxidações</p>
+                    <ul>
+                        <li>Correção em múltiplas etapas</li>
+                        <li>Equipamento profissional</li>
+                        <li>Acabamento espelhado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <i class="fas fa-spray-can" style="font-size: 80px; color: #FDB913;"></i>
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Vitrificação Cerâmica</h3>
+                    <p>Proteção de longa duração com revestimento cerâmico de alta performance</p>
+                    <ul>
+                        <li>Proteção até 5 anos</li>
+                        <li>Efeito hidrofóbico</li>
+                        <li>Resistência UV</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <i class="fas fa-couch" style="font-size: 80px; color: #FDB913;"></i>
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h3>Detalhamento Interno</h3>
+                    <p>Limpeza profunda e tratamento completo de todos os componentes internos</p>
+                    <ul>
+                        <li>Higienização a vapor</li>
+                        <li>Tratamento de couro</li>
+                        <li>Eliminação de odores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="section-header">
+            <p class="section-tag">NOSSO TRABALHO</p>
+            <h2>Transformações que Impressionam</h2>
+            <p>Veja o antes e depois dos nossos trabalhos. Cada projeto é executado com perfeição e atenção aos mínimos detalhes.</p>
+        </div>
+        <div class="before-after">
+            <div class="ba-item">
+                <span class="ba-label">ANTES</span>
+                <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #555 0%, #333 100%); border-radius: 12px;"></div>
+            </div>
+            <div class="ba-item">
+                <span class="ba-label depois">DEPOIS</span>
+                <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #888 0%, #666 100%); border-radius: 12px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>+5.000</h3>
+                <p>Veículos Atendidos</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Clientes Satisfeitos</p>
+            </div>
+            <div class="stat-item">
+                <h3>+10</h3>
+                <p>Anos de Experiência</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Garantia de Qualidade</p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="#trabalhos" class="btn-outline">Ver Mais Trabalhos <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <p class="section-tag">DEPOIMENTOS</p>
+            <h2>O Que Dizem Nossos Clientes</h2>
+            <p>A satisfação dos nossos clientes é o nosso maior reconhecimento. Confira os depoimentos de quem já confiou seu veículo à nossa equipe.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Serviço impecável! Meu carro ficou completamente transformado após o detalhamento completo. A equipe é extremamente profissional e atenciosa. Recomendo!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"A vitrificação cerâmica superou todas as minhas expectativas. O carro continua com brilho intenso mesmo após meses. Vale cada centavo investido!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Atendimento diferenciado e resultado perfeito. A atenção aos detalhes é impressionante. Agora sou cliente fiel do Studio Carbon!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="agendamento" class="cta">
+        <div class="cta-box">
+            <h2>Pronto para Transformar Seu Veículo?</h2>
+            <p>Agende agora seu serviço e descubra por que somos referência em estética automotiva premium. Garantia de qualidade e satisfação!</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Agendar Online</a>
+                <a href="https://wa.me/5511999999999" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+            <div class="contact-phone">
+                <i class="fas fa-phone"></i>
+                <span>Ou ligue: (11) 99999-9999</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section footer-about">
+                <div class="logo-icon">EA</div>
+                <h3>Estética<br>Automotiva Premium</h3>
+                <p>Excelência em estética automotiva. Cuidamos do seu veículo com a qualidade que ele merece.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#agendamento">Agendamento</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nossos Serviços</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Detalhamento Automotivo</a></li>
+                    <li><a href="#">Polimento e Cristalização</a></li>
+                    <li><a href="#">Vitrificação de Pintura</a></li>
+                    <li><a href="#">Higienização Interna</a></li>
+                    <li><a href="#">Lavagem Técnica</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Rua Exemplo, 123 - Bairro<br>São Paulo, SP</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 99999-9999</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@estetica.com.br</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Seg - Sex: 8h às 18h<br>Sáb: 9h às 14h</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Studio Carbon Automotivo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active link no scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
